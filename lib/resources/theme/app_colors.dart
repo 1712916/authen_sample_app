@@ -19,6 +19,15 @@ class AppColors {
     }
   }
 
+  static ColorStyle getColorStyle(ThemeMode themeMode) {
+    switch (themeMode) {
+      case ThemeMode.dark:
+        return ColorStyle.dark;
+      default:
+        return ColorStyle.light;
+    }
+  }
+
   external Color get primaryColor;
 
   external Color get backgroundColor;
@@ -38,6 +47,10 @@ class AppColors {
   external Color get dividerColor;
 
   external Color get shadowColor;
+
+  external Color get textFieldBackground;
+
+  external Color get labelColor;
 }
 
 class LightColors extends AppColors {
@@ -45,7 +58,7 @@ class LightColors extends AppColors {
   Color get primaryColor => const Color(0xFFE3FDFD);
 
   @override
-  Color get backgroundColor => const Color(0xFFE3FDFD);
+  Color get backgroundColor => const Color(0xFF3D3D3D);
 
   @override
   Color get canvasColor => const Color(0xFFE3FDFD);
@@ -70,6 +83,12 @@ class LightColors extends AppColors {
 
   @override
   Color get shadowColor => const Color(0xFFE3FDFD);
+
+  @override
+  Color get textFieldBackground => const Color(0xFF373737);
+
+  @override
+  Color get labelColor => const Color(0xFFF84E69);
 }
 
 class DarkColors extends AppColors {
@@ -102,4 +121,10 @@ class DarkColors extends AppColors {
 
   @override
   Color get shadowColor => const Color(0xFFE3FDFD);
+
+  @override
+  Color get textFieldBackground => const Color(0xFF373737);
+
+  @override
+  Color get labelColor => const Color(0xFFF84E69);
 }

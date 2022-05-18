@@ -2,16 +2,17 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sample_app/cubits/cubits.dart';
-import 'package:flutter_sample_app/routers/route.dart';
 
+import 'cubits/cubits.dart';
 import 'dependencies/app_dependencies.dart';
 import 'resources/theme/theme_data.dart';
 
+import '../routers/route.dart';
+HomeCubit _homeCubit = HomeCubit();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
+  await _homeCubit.setUp();
   BlocOverrides.runZoned(
     () async {
       await AppDependencies.init();
@@ -48,11 +49,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => ThemeCubit()..setUp()),
+        BlocProvider(create: (_) => _homeCubit),
       ],
       child: const _MaterialApp(),
     );
@@ -73,10 +81,11 @@ class _MaterialApp extends StatelessWidget {
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          initialRoute: RouteManager.home,
+          initialRoute: RouteManager.getInitRoute(context: context),
           onGenerateRoute: (settings) => RouteManager.getRoute(settings),
         );
       },
     );
   }
 }
+

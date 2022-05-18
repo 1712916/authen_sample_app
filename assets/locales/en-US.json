@@ -1,3 +1,17 @@
 {
-  "title": "This is my title"
+  "title": "This is my title",
+  "loginTitle": "Login",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "forgetPassword": "forget password?",
+  "createAccount": "Don't have an account? Create",
+  "userName": "User Name",
+  "register": "Register",
+  "navToLogin": "Already have an account? Login",
+  "defaultError": "Opps. This is an error.",
+  "forceInput": "Please not to blank.",
+  "invalidEmail": "Invalid email.",
+  "invalidPassword": "At least 8 characters length, one upper case, one lower case, one digit, one special character.",
+  "logout": "Logout"
 }

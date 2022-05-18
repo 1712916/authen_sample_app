@@ -1,3 +1,17 @@
 {
-  "title": "Đây là tiêu đề của tôi"
+  "title": "Đây là tiêu đề của tôi",
+  "loginTitle": "Đăng nhập",
+  "login": "Đăng nhập",
+  "email": "Email",
+  "password": "Mật khẩu",
+  "forgetPassword": "quên mật khẩu?",
+  "createAccount": "Chưa có tài khoản? Tạo mới",
+  "userName": "Tên tài khoản",
+  "register": "Đăng ký",
+  "navToLogin": "Bạn đã có tài khoản? Đăng nhập ngay",
+  "defaultError": "Uầy. Có lỗi rồi.",
+  "forceInput": "Vui lòng không để trống.",
+  "invalidEmail": "Email không hợp lệ.",
+  "invalidPassword": "Tối thiếu 8 ký tự, 1 chữ in hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt.",
+  "logout": "Đăng xuất"
 }

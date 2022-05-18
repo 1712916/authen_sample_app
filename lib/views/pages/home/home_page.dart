@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../cubits/cubits.dart';
 import '../../../resources/resources.dart';
+import '../../../routers/route.dart';
 import '../base_page/base_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,91 +18,66 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends CustomState<HomePage, HomeCubit> {
   @override
-  void dispose() {
-    super.dispose();
+  void getArguments(Object? arguments) {
+    cubit.initData(arguments);
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
-  Widget buildContent(BuildContext context) {
-    return const _HomeContent();
-  }
-
-  @override
-  buildFloatingActionButton(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
-      builder: (context, state) {
-        switch (state.loadStatus) {
-          case LoadStatus.init:
-            return const SizedBox();
-          case LoadStatus.loaded:
-            return FloatingActionButton(onPressed: () {
-              context.read<HomeCubit>().loadMore();
-            });
-          default:
-            return const SizedBox();
-        }
-      },
+  Widget _buildTitleText(String title, String? content) {
+    return RichText(
+      text: TextSpan(
+        text: '$title: ',
+        style: Theme.of(context).textTheme.subtitle1?.copyWith(
+          fontStyle: FontStyle.normal,
+        ),
+        children: [
+          TextSpan(
+            text: content,
+            style: Theme.of(context).textTheme.subtitle2?.copyWith(
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
+      ),
     );
   }
-
-  @override
-  PreferredSizeWidget? buildAppbar(BuildContext context) {
-    return AppBar(
-      title: const Text(LocaleKeys.title).tr(),
-    );
-  }
-
-  @override
-  HomeCubit get cubit => widget.cubit..initData();
-}
-
-class _HomeContent extends StatelessWidget {
-  const _HomeContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
-      builder: (context, state) {
-        switch (state.loadStatus) {
-          case LoadStatus.init:
-            return const SizedBox();
-          case LoadStatus.loading:
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          case LoadStatus.loaded:
-            final contents = state.contents;
-            return Column(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    context.read<ThemeCubit>().switchMode(ThemeMode.light);
-                  },
-                  child: Container(
-                    height: 100,
-                    width: 100,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: contents?.length ?? 0,
-                    itemBuilder: (context, index) {
-                      return Text(contents?[index] ?? '');
-                    },
-                  ),
-                ),
-              ],
-            );
-          default:
-            return const SizedBox();
-        }
-      },
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Hello :3'),
+            const SizedBox(height: 16),
+            BlocBuilder<HomeCubit, HomeState>(
+              builder: (context, state) {
+                if (state.profileModel != null) {
+                  final profileModel = state.profileModel;
+                  return Column(
+                    children: [
+                      _buildTitleText(LocaleKeys.email.tr(), profileModel!.email),
+                      const SizedBox(height: 10),
+                      _buildTitleText(LocaleKeys.userName.tr(), profileModel.userName),
+                      const SizedBox(height: 10),
+                    ],
+                  );
+                }
+                return const SizedBox.shrink();
+              },
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  await context.read<HomeCubit>().logout();
+                  Navigator.of(context).pushNamedAndRemoveUntil(RouteManager.login, (route) => false);
+                },
+                child: Text(LocaleKeys.logout).tr()),
+          ],
+        ),
+      ),
     );
   }
+
+  @override
+  HomeCubit get cubit => widget.cubit;
 }

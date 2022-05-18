@@ -1,7 +1,8 @@
-name: flutter_sample_app
+name: authen_sample_app
 description: A new Flutter project.
 authors:
   - vinh ngo tan
+   #ui design free by: https://ui8.net/mohit-panchal/products/mobile-app-login-ui
 
 version: 1.0.0+1
 
@@ -16,6 +17,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   get_it: ^7.2.0
   dio: ^4.0.6
+  shared_preferences: ^2.0.15
 
 
   cupertino_icons: ^1.0.2

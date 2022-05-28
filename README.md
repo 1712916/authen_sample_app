@@ -1,10 +1,22 @@
-# flutter_sample_app
+# authen_sample_app
+Flutter example app: use flutter_bloc (cubit) to manage state.
 
-A new Flutter sample project
+Author: Vịnh Ngô
+Email: kieuphong2840@gmail.com
 
-Use Bloc Cubit to management state.
+Ui design free by: (https://ui8.net/mohit-panchal/products/mobile-app-login-ui)
 
-- Views is Presentation 
-- Cubits is Business Logic
-- Data is Data
+Set up core struct: (https://github.com/1712916/flutter_sample_app)
+---------------------------------------------------------
+This repository implements a simple authentication app with two main functions.
+1. Login
+2. Register
+---------------------------------------------------------
+1. Login
+  - handle input text (format text)
+  - handle message validate 
+  - logic success save to sharedReference
+2. Register
+  - similar like Login function
+---------------------------------------------------------
 

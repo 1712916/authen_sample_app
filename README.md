@@ -4,9 +4,10 @@ Flutter example app: use flutter_bloc (cubit) to manage state.
 Author: Vịnh Ngô
 Email: kieuphong2840@gmail.com
 
-Ui design free by: (https://ui8.net/mohit-panchal/products/mobile-app-login-ui)
+Ui design free by: https://ui8.net/mohit-panchal/products/mobile-app-login-ui
 
-Set up core struct: (https://github.com/1712916/flutter_sample_app)
+Set up core struct: https://github.com/1712916/flutter_sample_app
+
 ---------------------------------------------------------
 This repository implements a simple authentication app with two main functions.
 1. Login

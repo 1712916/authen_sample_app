@@ -15,8 +15,8 @@ This repository implements a simple authentication app with two main functions.
 ---------------------------------------------------------
 1. Login
   - handle input text (format text)
-  - handle message validate 
-  - logic success save to sharedReference
+  - handle validate 
+  - save login state to sharedReferences
 2. Register
   - similar like Login function
 ---------------------------------------------------------
